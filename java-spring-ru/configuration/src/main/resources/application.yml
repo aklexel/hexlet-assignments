@@ -1,11 +1,24 @@
 ---
 # BEGIN
+spring:
+  output:
+    ansi:
+      enabled: always
 
+server:
+  address: 0.0.0.0
+  port: 7070
 # END
 
 users:
   admins:
-    - gjoinsey1@blogger.com
-    - scrosi4@cam.ac.uk
-    - scrosi4@cam.ac.uk
+    - id: 1
+      name: "Glynn Joinsey"
+      email: gjoinsey1@blogger.com
+    - id: 2
+      name: "Sarina Crosi"
+      email: scrosi4@cam.ac.uk
+    - id: 3
+      name: "Emmit Brundle"
+      email: brundle@cam.ac.uk
 

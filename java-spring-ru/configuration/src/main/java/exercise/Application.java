@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import  org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import exercise.model.User;
 import exercise.component.UserProperties;
@@ -21,7 +21,17 @@ public class Application {
     private List<User> users = Data.getUsers();
 
     // BEGIN
-    
+    @Autowired
+    private UserProperties admins;
+
+    @GetMapping("/admins")
+    public List<String> admins() {
+        return admins.getAdmins()
+                .stream()
+                .map(u -> u.getName())
+                .sorted()
+                .toList();
+    }
     // END
 
     @GetMapping("/users")
@@ -31,9 +41,7 @@ public class Application {
 
     @GetMapping("/users/{id}")
     public Optional<User> show(@PathVariable Long id) {
-        var user = users.stream()
-            .filter(u -> u.getId() == id)
-            .findFirst();
+        var user = users.stream().filter(u -> u.getId() == id).findFirst();
         return user;
     }
 

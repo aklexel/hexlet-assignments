@@ -1,5 +1,6 @@
 package exercise.component;
 
+import exercise.model.User;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -13,5 +14,5 @@ import java.util.List;
 @Getter
 @Setter
 public class UserProperties {
-    private List<String> admins;
+    private List<User> admins;
 }
