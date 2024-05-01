@@ -22,7 +22,16 @@ public class ProductsController {
     private ProductRepository productRepository;
 
     // BEGIN
-    
+    @GetMapping()
+    public List<Product> find(@RequestParam(defaultValue = "0") int min, @RequestParam(defaultValue = "0") int max) {
+        var sort = Sort.by(Sort.Order.asc("price"));
+
+        if (min == 0 && max == 0) {
+            return productRepository.findAll(sort);
+        }
+
+        return productRepository.findByPriceBetween(min, max, sort);
+    }
     // END
 
     @GetMapping(path = "/{id}")
