@@ -113,7 +113,7 @@ class PostsTest {
         post.setTitle("post");
         post.setBody("body");
 
-        var request = put("/products/{id}", 100)
+        var request = put("/posts/{id}", 100)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(om.writeValueAsString(post));
 
