@@ -149,15 +149,13 @@ class ApplicationTest {
     }
 
     private Task generateTask() {
-        var task = Instancio.of(Task.class)
+        return Instancio.of(Task.class)
                 .ignore(Select.field(Task::getId))
                 .supply(Select.field(Task::getTitle), () -> faker.lorem().word())
                 .supply(Select.field(Task::getDescription), () -> faker.lorem().maxLengthSentence(10))
                 .supply(Select.field(Task::getCreatedAt), this::generateLocalDate)
                 .supply(Select.field(Task::getUpdatedAt), this::generateLocalDate)
                 .create();
-
-        return task;
     }
 
     private LocalDate generateLocalDate() {
