@@ -153,8 +153,8 @@ class ApplicationTest {
                 .ignore(Select.field(Task::getId))
                 .supply(Select.field(Task::getTitle), () -> faker.lorem().word())
                 .supply(Select.field(Task::getDescription), () -> faker.lorem().maxLengthSentence(10))
-                .supply(Select.field(Task::getCreatedAt), () -> generateLocalDate())
-                .supply(Select.field(Task::getUpdatedAt), () -> generateLocalDate())
+                .supply(Select.field(Task::getCreatedAt), this::generateLocalDate)
+                .supply(Select.field(Task::getUpdatedAt), this::generateLocalDate)
                 .create();
 
         return task;
