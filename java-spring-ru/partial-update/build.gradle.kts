@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     // BEGIN
-    
+    implementation("org.openapitools:jackson-databind-nullable:0.2.6")
     // END
     implementation("org.mapstruct:mapstruct:1.5.5.Final")
     annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
