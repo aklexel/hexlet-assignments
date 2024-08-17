@@ -10,5 +10,7 @@ spring:
       enabled: always
 
 # BEGIN
-
+rsa:
+  public-key: classpath:certs/public.pem
+  private-key: classpath:certs/private.pem
 # END

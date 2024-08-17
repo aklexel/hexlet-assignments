@@ -94,6 +94,7 @@ class UsersControllerTest {
     public void testCreate() throws Exception {
 
         var request = post("/users")
+                .with(jwt())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(om.writeValueAsString(testUser));
 
@@ -106,6 +107,16 @@ class UsersControllerTest {
         assertThat(user.getName()).isEqualTo(testUser.getName());
         assertThat(user.getEmail()).isEqualTo(testUser.getEmail());
         assertThat(user.getPasswordDigest()).isNotEqualTo(testUser.getPasswordDigest());
+    }
+
+    @Test
+    public void testCreateWithoutAuth() throws Exception {
+        var request = post("/users")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(om.writeValueAsString(testUser));
+
+        mockMvc.perform(request)
+                .andExpect(status().isUnauthorized());
     }
 
     @Test
